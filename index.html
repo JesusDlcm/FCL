@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login - Cotizador Marítimo</title>
+    <title>Login - Cotizador MarÃ­timo</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
@@ -133,12 +133,12 @@
     <div class="login-container">
         <div class="logo">
             <i class="fas fa-ship"></i>
-            <h1>COTIZADOR MARÍTIMO</h1>
+            <h1>COTIZADOR MARÃTIMO</h1>
         </div>
         
         <div id="errorMessage" class="error">
             <i class="fas fa-exclamation-circle"></i>
-            <span id="errorText">Usuario o contraseña incorrectos</span>
+            <span id="errorText">Usuario o contraseÃ±a incorrectos</span>
         </div>
         
         <form id="loginForm">
@@ -148,8 +148,8 @@
             </div>
             
             <div class="form-group">
-                <label for="password"><i class="fas fa-lock"></i> Contraseña</label>
-                <input type="password" id="password" name="password" placeholder="Ingresa tu contraseña" required>
+                <label for="password"><i class="fas fa-lock"></i> ContraseÃ±a</label>
+                <input type="password" id="password" name="password" placeholder="Ingresa tu contraseÃ±a" required>
             </div>
             
             <button type="submit" class="btn">
@@ -159,7 +159,7 @@
         </form>
         
         <div class="footer">
-            <p>Sistema de cotizaciones marítimas - Versión 2.0</p>
+            <p>Sistema de cotizaciones marÃ­timas - VersiÃ³n 2.0</p>
         </div>
     </div>
 
@@ -172,7 +172,7 @@
             const errorMessage = document.getElementById('errorMessage');
             const errorText = document.getElementById('errorText');
             
-            // Credenciales válidas
+            // Credenciales vÃ¡lidas
             const validUsername = 'PricingIFS';
             const validPassword = 'Pricingifs25';
             
@@ -183,7 +183,7 @@
                 window.location.href = 'cotizador.html';
             } else {
                 // Login fallido
-                errorText.textContent = 'Usuario o contraseña incorrectos';
+                errorText.textContent = 'Usuario o contraseÃ±a incorrectos';
                 errorMessage.style.display = 'flex';
                 
                 // Limpiar campos
