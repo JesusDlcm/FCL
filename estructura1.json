@@ -15,7 +15,7 @@
           "HAPAG": {
             "conceptos": {
               "GDCE Para el publico en general": 152.00,
-              "TDE (Tr·mite documentario de exportacion)": 98.00,
+              "TDE (Tr√°mite documentario de exportacion)": 98.00,
               "Precinto Basc": 5.00
             },
             "total": 255.00
@@ -144,7 +144,7 @@
           "HAPAG": {
             "conceptos": {
               "GDCE Para el publico en general": 152.00,
-              "TDE (Tr·mite documentario de exportacion)": 98.00,
+              "TDE (Tr√°mite documentario de exportacion)": 98.00,
               "Precinto Basc": 5.00
             },
             "total": 255.00
@@ -218,7 +218,7 @@
           "HAPAG": {
             "conceptos": {
               "GDCE Para el publico en general": 152.00,
-              "TDE (Tr·mite documentario de exportacion)": 98.00,
+              "TDE (Tr√°mite documentario de exportacion)": 98.00,
               "Precinto Basc": 5.00
             },
             "total": 255.00
@@ -347,7 +347,7 @@
           "HAPAG": {
             "conceptos": {
               "GDCE Para el publico en general": 152.00,
-              "TDE (Tr·mite documentario de exportacion)": 98.00,
+              "TDE (Tr√°mite documentario de exportacion)": 98.00,
               "Precinto Basc": 5.00
             },
             "total": 255.00
@@ -740,7 +740,7 @@
         }
       }
     },
-    "AlmacÈn": {
+    "Almac√©n": {
       "DRY": {
         "CALLAO": {
           "DPW": {
@@ -842,10 +842,10 @@
                 "40ST": 401.00,
                 "40HC": 401.00
               },
-              "Contenedor 20 pies - Incluye uso de ·rea hasta el dÌa 7": {
+              "Contenedor 20 pies - Incluye uso de √°rea hasta el d√≠a 7": {
                 "20ST": 243.10
               },
-              "Contenedor 40 pies - Incluye uso de ·rea hasta el dÌa 7": {
+              "Contenedor 40 pies - Incluye uso de √°rea hasta el d√≠a 7": {
                 "40ST": 375.70,
                 "40HC": 375.70
               },
@@ -863,7 +863,7 @@
                 "40ST": 228.53,
                 "40HC": 228.53
               },
-              "Servicio Especial DepÛsito Temporal - Exportaciones - Incluye Uso de ¡rea del dÌa 4 al dÌa 7": {
+              "Servicio Especial Dep√≥sito Temporal - Exportaciones - Incluye Uso de √Årea del d√≠a 4 al d√≠a 7": {
                 "20ST": 400.00,
                 "40ST": 400.00,
                 "40HC": 400.00
@@ -874,10 +874,10 @@
         "CHANCAY": {
           "COSCO": {
             "conceptos": {
-              "Loading or Unloading of Full 20-foot Containers  Cargo Portion": {
+              "Loading or Unloading of Full 20-foot Containers ‚Äì Cargo Portion": {
                 "20ST": 105.00
               },
-              "Loading or Unloading of Full 40-foot Containers  Cargo Portion": {
+              "Loading or Unloading of Full 40-foot Containers ‚Äì Cargo Portion": {
                 "40ST": 190.00,
                 "40HC": 190.00
               },
@@ -903,10 +903,10 @@
               "Embarque de Contenedores Llenos 40 pies con carga refrigerada": {
                 "40RE": 401.00
               },
-              "Contenedor 20 pies - Incluye uso de ·rea hasta el dÌa 7": {
+              "Contenedor 20 pies - Incluye uso de √°rea hasta el d√≠a 7": {
                 "20RE": 364.90
               },
-              "Contenedor 40 pies - Incluye uso de ·rea hasta el dÌa 7": {
+              "Contenedor 40 pies - Incluye uso de √°rea hasta el d√≠a 7": {
                 "40RE": 518.40
               },
               "Contenedores alto cubicaje (high cube 9'6\" altura) (n35)": {
@@ -916,11 +916,11 @@
           },
           "DPW": {
             "conceptos": {
-              "RecepciÛn del contenedor Reefer, ExportaciÛn e ImportaciÛn (n16)": {
+              "Recepci√≥n del contenedor Reefer, Exportaci√≥n e Importaci√≥n (n16)": {
                 "20RE": 165.00,
                 "40RE": 165.00
               },
-              "Paquete Refrigerado para contenedores de exportaciÛn (n16.2) - 40 pies": {
+              "Paquete Refrigerado para contenedores de exportaci√≥n (n16.2) - 40 pies": {
                 "40RE": 330.00
               }
             }
@@ -1100,7 +1100,7 @@
           "BARRANCA": 580.00,
           "HUARAL": 380.00,
           "CHILCA": 520.00,
-          "CA—ETE": 520.00,
+          "CA√ëETE": 520.00,
           "CHINCHA": 590.00,
           "PISCO": 700.00,
           "PARACAS": 700.00,
@@ -1167,7 +1167,7 @@
           "CARMEN DE LA LEGUA": 190.00,
           "LA PERLA": 190.00,
           "LA PUNTA": 190.00,
-          "BRE—A": 270.00,
+          "BRE√ëA": 270.00,
           "COMAS": 270.00,
           "INDEPENDENCIA": 270.00,
           "JESUS MARIA": 270.00,
