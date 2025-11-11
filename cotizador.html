@@ -1,0 +1,1107 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cotizador Marítimo Profesional</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #2c3e50;
+            --secondary: #3498db;
+            --accent: #e74c3c;
+            --success: #27ae60;
+            --warning: #f39c12;
+            --light: #ecf0f1;
+            --dark: #34495e;
+            --text: #333;
+            --border: #ddd;
+            --shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body { 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+            margin: 0;
+            padding: 20px; 
+            background: #f8f9fa; 
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            min-height: 100vh;
+            color: var(--text);
+            line-height: 1.6;
+        }
+        
+        .container { 
+            max-width: 1400px; 
+            width: 100%;
+            margin: 0 auto; 
+            background: white; 
+            padding: 30px; 
+            border-radius: 10px; 
+            box-shadow: var(--shadow);
+        }
+        
+        h1 { 
+            text-align: center; 
+            color: var(--primary); 
+            margin-bottom: 25px; 
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+        
+        .app-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: bold;
+            color: var(--primary);
+        }
+        
+        .logo i {
+            font-size: 24px;
+            color: var(--secondary);
+        }
+        
+        .user-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: var(--light);
+            padding: 10px 15px;
+            border-radius: 6px;
+            margin-bottom: 20px;
+        }
+
+        .user-welcome {
+            font-weight: 600;
+            color: var(--primary);
+        }
+
+        .btn-logout {
+            background: var(--accent);
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .btn-logout:hover {
+            background: #c0392b;
+        }
+        
+        .controls { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); 
+            gap: 20px; 
+            margin-bottom: 30px; 
+        }
+        
+        .form-group { 
+            margin-bottom: 15px; 
+        }
+        
+        label { 
+            display: block; 
+            margin-bottom: 8px; 
+            font-weight: 600; 
+            color: var(--dark);
+        }
+        
+        select, input { 
+            width: 100%; 
+            padding: 12px; 
+            border: 1px solid var(--border); 
+            border-radius: 6px; 
+            font-size: 15px;
+            transition: all 0.3s;
+        }
+        
+        select:focus, input:focus {
+            outline: none;
+            border-color: var(--secondary);
+            box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+        }
+        
+        .multiselect { 
+            height: 120px; 
+        }
+        
+        .form-hint { 
+            color: #666; 
+            font-size: 13px; 
+            margin-top: 5px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .btn { 
+            background: var(--accent); 
+            color: white; 
+            border: none; 
+            padding: 14px 28px; 
+            border-radius: 6px; 
+            cursor: pointer; 
+            font-size: 16px; 
+            font-weight: 600;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .btn:hover { 
+            background: #c0392b; 
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+        }
+        
+        .btn:active {
+            transform: translateY(0);
+        }
+        
+        .btn-container { 
+            text-align: center; 
+            margin: 30px 0; 
+        }
+        
+        .btn-secondary {
+            background: var(--secondary);
+        }
+        
+        .btn-secondary:hover {
+            background: #2980b9;
+        }
+        
+        /* ESTILOS MEJORADOS PARA LA TABLA - ALINEACIÓN CENTRADA */
+        .table-section {
+            margin-top: 30px;
+        }
+        
+        .table-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .table-title {
+            font-size: 20px;
+            font-weight: 600;
+            color: var(--primary);
+        }
+        
+        .table-actions {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .table-wrapper {
+            width: 100%;
+            overflow-x: auto;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+        
+        table { 
+            width: auto;
+            min-width: 100%;
+            border-collapse: collapse; 
+            margin: 0;
+        }
+        
+        th, td { 
+            border: 1px solid var(--border); 
+            padding: 12px; 
+            text-align: center; /* TODAS LAS CELDAS CENTRADAS */
+            white-space: nowrap;
+            position: relative;
+        }
+        
+        th { 
+            background: var(--primary); 
+            color: white; 
+            font-weight: 600;
+            position: sticky;
+            top: 0;
+        }
+        
+        /* Primera columna fija - PERO CENTRADA */
+        th:first-child,
+        td:first-child {
+            position: sticky;
+            left: 0;
+            background: #f8f9fa;
+            z-index: 3;
+            text-align: center; /* SERVICIOS TAMBIÉN CENTRADO */
+            min-width: 180px;
+            font-weight: 600;
+        }
+        
+        th:first-child {
+            background: var(--primary);
+            z-index: 4;
+        }
+        
+        /* Headers de navieras agrupadas */
+        .naviera-group {
+            background: var(--dark) !important;
+            border-bottom: 2px solid var(--primary);
+        }
+        
+        .tamano-header {
+            background: #34495e !important;
+            font-size: 13px;
+            font-weight: 500;
+        }
+        
+        .servicio-row { 
+            background: #f8f9fa; 
+        }
+        
+        .total-row td { 
+            background: var(--success) !important; 
+            color: white; 
+            font-weight: bold; 
+            font-size: 16px;
+        }
+        
+        .total-row td:first-child {
+            background: var(--success) !important;
+        }
+        
+        .error { 
+            color: var(--accent); 
+            background: #fdf2f2; 
+            padding: 12px 15px; 
+            margin: 15px 0; 
+            border-radius: 6px; 
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            border-left: 4px solid var(--accent);
+        }
+        
+        .success { 
+            color: var(--success); 
+            background: #f2fdf2; 
+            padding: 12px 15px; 
+            margin: 15px 0; 
+            border-radius: 6px; 
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            border-left: 4px solid var(--success);
+        }
+        
+        .loading { 
+            text-align: center; 
+            color: var(--secondary); 
+            margin: 30px 0; 
+            font-size: 18px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .spinner {
+            border: 4px solid rgba(52, 152, 219, 0.2);
+            border-radius: 50%;
+            border-top: 4px solid var(--secondary);
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .hidden { 
+            display: none; 
+        }
+        
+        /* Mejoras visuales para celdas */
+        td {
+            background: white;
+            transition: background-color 0.2s;
+        }
+        
+        tr:hover td:not(:first-child) {
+            background: #f0f8ff;
+        }
+        
+        /* Cards para información adicional */
+        .info-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .card {
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            border-left: 4px solid var(--secondary);
+        }
+        
+        .card h3 {
+            margin-bottom: 10px;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .card p {
+            color: #666;
+            font-size: 14px;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+            
+            .controls {
+                grid-template-columns: 1fr;
+            }
+            
+            .app-header {
+                flex-direction: column;
+                gap: 15px;
+                align-items: flex-start;
+            }
+            
+            .table-header {
+                flex-direction: column;
+                gap: 15px;
+                align-items: flex-start;
+            }
+            
+            .table-actions {
+                width: 100%;
+                justify-content: space-between;
+            }
+        }
+        
+        /* Badge para selecciones */
+        .selection-badge {
+            display: inline-flex;
+            align-items: center;
+            background: var(--light);
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 13px;
+            margin: 2px;
+        }
+        
+        .selection-badge i {
+            margin-left: 5px;
+            cursor: pointer;
+        }
+        
+        .selections-display {
+            margin-top: 10px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="app-header">
+            <div class="logo">
+                <i class="fas fa-ship"></i>
+                <span>COTIZADOR MARÍTIMO</span>
+            </div>
+            <div class="app-version">v2.0</div>
+        </div>
+
+        <div class="user-info">
+            <span class="user-welcome">Bienvenido: PricingIFS</span>
+            <button class="btn-logout" onclick="cerrarSesion()">
+                <i class="fas fa-sign-out-alt"></i> Cerrar Sesión
+            </button>
+        </div>
+        
+        <h1><i class="fas fa-calculator"></i> Cotizador de Carga Marítima</h1>
+        
+        <div class="info-cards">
+            <div class="card">
+                <h3><i class="fas fa-info-circle"></i> Cómo usar</h3>
+                <p>Selecciona los parámetros de tu envío y el sistema calculará automáticamente los costos asociados.</p>
+            </div>
+            <div class="card">
+                <h3><i class="fas fa-lightbulb"></i> Consejos</h3>
+                <p>Para selección múltiple mantén presionada la tecla CTRL (o CMD en Mac) al hacer clic.</p>
+            </div>
+        </div>
+        
+        <div id="loading" class="loading">
+            <div class="spinner"></div>
+            <div>Cargando datos de cotización...</div>
+        </div>
+        
+        <div id="controls" class="controls hidden">
+            <div class="form-group">
+                <label><i class="fas fa-box"></i> Tipo de Carga</label>
+                <select id="tipoCarga">
+                    <option value="DRY">DRY</option>
+                    <option value="REEFER">REEFER</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label><i class="fas fa-anchor"></i> Puerto</label>
+                <select id="puerto">
+                    <option value="CALLAO">CALLAO</option>
+                    <option value="PAITA">PAITA</option>
+                    <option value="CHANCAY">CHANCAY</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label><i class="fas fa-industry"></i> Operador Portuario</label>
+                <select id="operadorPortuario"></select>
+            </div>
+            
+            <div class="form-group" id="almacenGroup">
+                <label><i class="fas fa-warehouse"></i> Almacén</label>
+                <select id="almacen">
+                    <option value="Embarque directo">Embarque directo</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label><i class="fas fa-route"></i> Ruta</label>
+                <select id="ruta">
+                    <option value="Sin transporte">Sin transporte</option>
+                </select>
+            </div>
+            
+            <div class="form-group" id="destinoGroup">
+                <label><i class="fas fa-map-marker-alt"></i> Destino</label>
+                <select id="destino"></select>
+            </div>
+            
+            <div class="form-group">
+                <label><i class="fas fa-ship"></i> Navieras</label>
+                <select id="lineasNavieras" multiple class="multiselect"></select>
+                <div class="form-hint">
+                    <i class="fas fa-mouse-pointer"></i> Ctrl+Click para selección múltiple
+                </div>
+                <div id="navierasSeleccionadas" class="selections-display"></div>
+            </div>
+            
+            <div class="form-group">
+                <label><i class="fas fa-ruler-combined"></i> Tamaños</label>
+                <select id="tamanos" multiple class="multiselect"></select>
+                <div class="form-hint">
+                    <i class="fas fa-mouse-pointer"></i> Ctrl+Click para selección múltiple
+                </div>
+                <div id="tamanosSeleccionados" class="selections-display"></div>
+            </div>
+            
+            <div class="form-group">
+                <label><i class="fas fa-chart-line"></i> Profit ($)</label>
+                <input type="number" id="profitMargin" min="0" value="0" step="0.01" placeholder="Ej: 50.00">
+                <div class="form-hint">
+                    <i class="fas fa-info-circle"></i> Monto fijo por contenedor
+                </div>
+            </div>
+        </div>
+        
+        <div id="btnContainer" class="btn-container hidden">
+            <button class="btn" onclick="calcularCotizacion()">
+                <i class="fas fa-calculator"></i> CALCULAR COTIZACIÓN
+            </button>
+            <button class="btn btn-secondary" onclick="resetearFormulario()" style="margin-left: 10px;">
+                <i class="fas fa-redo"></i> LIMPIAR
+            </button>
+        </div>
+        
+        <div id="errorContainer"></div>
+        
+        <div id="tablaContainer" class="hidden table-section">
+            <div class="table-header">
+                <div class="table-title">
+                    <i class="fas fa-table"></i> Resumen de Costos
+                </div>
+                <div class="table-actions">
+                    <button class="btn btn-secondary" onclick="exportarPDF()">
+                        <i class="fas fa-file-pdf"></i> Exportar PDF
+                    </button>
+                    <button class="btn btn-secondary" onclick="copiarTabla()">
+                        <i class="fas fa-copy"></i> Copiar Datos
+                    </button>
+                </div>
+            </div>
+            
+            <div class="table-wrapper">
+                <table id="tablaCotizador">
+                    <thead id="tablaHeader">
+                        <!-- Los headers se generarán dinámicamente con estructura corregida -->
+                    </thead>
+                    <tbody id="cuerpoTabla"></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // ===== VERIFICACIÓN DE SEGURIDAD - NO ELIMINAR =====
+        (function() {
+            const loginTime = localStorage.getItem('loginTime');
+            const currentTime = new Date().getTime();
+            const twelveHours = 12 * 60 * 60 * 1000; // 12 horas en milisegundos
+            
+            if (localStorage.getItem('userLoggedIn') !== 'true' || 
+                (loginTime && (currentTime - parseInt(loginTime)) > twelveHours)) {
+                
+                localStorage.removeItem('userLoggedIn');
+                localStorage.removeItem('loginTime');
+                window.location.href = 'index.html';
+                return;
+            }
+        })();
+        // ===== FIN VERIFICACIÓN =====
+
+        // Configuración inicial
+        const serviciosBase = ['Visto Bueno', 'Gate Out', 'Almacén', 'Derechos de embarque', 'Aduanas', 'Transporte', 'Profit'];
+        const tamanosPorTipo = {
+            'DRY': ['20ST', '40ST', '40HC'],
+            'REEFER': ['20RE', '40RE']
+        };
+        
+        const rutasPermitidas = {
+            'DRY': {
+                'CALLAO': ['Callao - Callao', 'Sin transporte'],
+                'PAITA': ['Sin transporte'],
+                'CHANCAY': ['Sin transporte']
+            },
+            'REEFER': {
+                'CALLAO': ['Callao - Callao', 'Callao - Chancay', 'Sin transporte'],
+                'CHANCAY': ['Chancay - Chancay', 'Sin transporte'],
+                'PAITA': ['Sin transporte']
+            }
+        };
+        
+        let datosReales = {};
+
+        // Funciones de utilidad
+        function mostrarError(mensaje) {
+            document.getElementById('errorContainer').innerHTML = `
+                <div class="error">
+                    <i class="fas fa-exclamation-circle"></i>
+                    <div>${mensaje}</div>
+                </div>`;
+        }
+        
+        function mostrarExito(mensaje) {
+            document.getElementById('errorContainer').innerHTML = `
+                <div class="success">
+                    <i class="fas fa-check-circle"></i>
+                    <div>${mensaje}</div>
+                </div>`;
+        }
+
+        function limpiarErrores() {
+            document.getElementById('errorContainer').innerHTML = '';
+        }
+
+        function mostrarElemento(id) {
+            document.getElementById(id).classList.remove('hidden');
+        }
+
+        function ocultarElemento(id) {
+            document.getElementById(id).classList.add('hidden');
+        }
+        
+        function actualizarSelecciones() {
+            const navierasSelect = document.getElementById('lineasNavieras');
+            const navierasDisplay = document.getElementById('navierasSeleccionadas');
+            const navierasSeleccionadas = Array.from(navierasSelect.selectedOptions).map(o => o.value);
+            
+            navierasDisplay.innerHTML = '';
+            navierasSeleccionadas.forEach(naviera => {
+                const badge = document.createElement('div');
+                badge.className = 'selection-badge';
+                badge.innerHTML = `${naviera.replace(/_/g, ' ')} <i class="fas fa-times" onclick="deseleccionarNaviera('${naviera}')"></i>`;
+                navierasDisplay.appendChild(badge);
+            });
+            
+            const tamanosSelect = document.getElementById('tamanos');
+            const tamanosDisplay = document.getElementById('tamanosSeleccionados');
+            const tamanosSeleccionados = Array.from(tamanosSelect.selectedOptions).map(o => o.value);
+            
+            tamanosDisplay.innerHTML = '';
+            tamanosSeleccionados.forEach(tamano => {
+                const badge = document.createElement('div');
+                badge.className = 'selection-badge';
+                badge.innerHTML = `${tamano} <i class="fas fa-times" onclick="deseleccionarTamano('${tamano}')"></i>`;
+                tamanosDisplay.appendChild(badge);
+            });
+        }
+        
+        function deseleccionarNaviera(naviera) {
+            const select = document.getElementById('lineasNavieras');
+            const options = Array.from(select.options);
+            const option = options.find(o => o.value === naviera);
+            if (option) option.selected = false;
+            actualizarSelecciones();
+        }
+        
+        function deseleccionarTamano(tamano) {
+            const select = document.getElementById('tamanos');
+            const options = Array.from(select.options);
+            const option = options.find(o => o.value === tamano);
+            if (option) option.selected = false;
+            actualizarSelecciones();
+        }
+
+        // Cargar datos JSON
+        async function cargarDatos() {
+            try {
+                const response = await fetch('estructura1.json');
+                if (!response.ok) throw new Error('No se pudo cargar el archivo JSON');
+                datosReales = await response.json();
+                
+                console.log('Datos cargados:', datosReales);
+                
+                mostrarElemento('controls');
+                mostrarElemento('btnContainer');
+                ocultarElemento('loading');
+                
+                inicializar();
+            } catch (error) {
+                document.getElementById('loading').innerHTML = `
+                    <div class="error">
+                        <i class="fas fa-exclamation-circle"></i>
+                        <div>Error: ${error.message}</div>
+                    </div>`;
+            }
+        }
+
+        // Inicializar la aplicación
+        function inicializar() {
+            document.getElementById('tipoCarga').addEventListener('change', actualizarTodo);
+            document.getElementById('puerto').addEventListener('change', actualizarTodo);
+            document.getElementById('operadorPortuario').addEventListener('change', function() {
+                const tipo = document.getElementById('tipoCarga').value;
+                const puerto = document.getElementById('puerto').value;
+                cargarNavieras(this.value, tipo, puerto);
+                cargarAlmacenes(puerto, this.value);
+            });
+            document.getElementById('ruta').addEventListener('change', function() {
+                const tipo = document.getElementById('tipoCarga').value;
+                cargarDestinos(tipo, this.value);
+            });
+            
+            document.getElementById('lineasNavieras').addEventListener('change', actualizarSelecciones);
+            document.getElementById('tamanos').addEventListener('change', actualizarSelecciones);
+            
+            actualizarTodo();
+        }
+
+        function actualizarTodo() {
+            limpiarErrores();
+            const tipo = document.getElementById('tipoCarga').value;
+            const puerto = document.getElementById('puerto').value;
+            
+            cargarOperadores(tipo, puerto);
+            cargarRutas(tipo, puerto);
+            cargarTamanos(tipo);
+            
+            setTimeout(() => {
+                const operador = document.getElementById('operadorPortuario').value;
+                if (operador && operador !== '-') {
+                    cargarAlmacenes(puerto, operador);
+                }
+            }, 100);
+        }
+
+        function cargarOperadores(tipo, puerto) {
+            const select = document.getElementById('operadorPortuario');
+            select.innerHTML = '';
+            
+            const relaciones = datosReales.relaciones?.[tipo]?.[puerto];
+            if (relaciones && Object.keys(relaciones).length > 0) {
+                Object.keys(relaciones).forEach(op => {
+                    select.appendChild(new Option(op, op));
+                });
+            } else {
+                select.appendChild(new Option('- No disponible -', '-'));
+            }
+            
+            if (select.options.length > 0 && select.value !== '-') {
+                cargarNavieras(select.value, tipo, puerto);
+            }
+        }
+
+        function cargarNavieras(operador, tipo, puerto) {
+            const select = document.getElementById('lineasNavieras');
+            select.innerHTML = '';
+            
+            const navieras = datosReales.relaciones?.[tipo]?.[puerto]?.[operador] || [];
+            
+            if (navieras.length > 0) {
+                navieras.forEach(n => {
+                    select.appendChild(new Option(n.replace(/_/g, ' '), n, true, true));
+                });
+                actualizarSelecciones();
+            } else {
+                mostrarError(`No hay navieras disponibles para ${operador} en ${puerto}`);
+            }
+        }
+
+        function cargarRutas(tipo, puerto) {
+            const select = document.getElementById('ruta');
+            select.innerHTML = '<option value="Sin transporte">Sin transporte</option>';
+            
+            const rutas = rutasPermitidas[tipo]?.[puerto] || ['Sin transporte'];
+            rutas.forEach(r => {
+                if (r !== 'Sin transporte') {
+                    select.appendChild(new Option(r, r));
+                }
+            });
+            
+            cargarDestinos(tipo, select.value);
+        }
+
+        function cargarDestinos(tipo, ruta) {
+            const group = document.getElementById('destinoGroup');
+            const select = document.getElementById('destino');
+            select.innerHTML = '';
+            
+            if (ruta === "Sin transporte") {
+                ocultarElemento('destinoGroup');
+                return;
+            }
+            
+            let rutaAjustada = ruta;
+            if (ruta === 'Callao - Callao') rutaAjustada = 'Callao - Callao';
+            if (ruta === 'Callao - Chancay') rutaAjustada = 'Callao - Chancay';
+            if (ruta === 'Chancay - Chancay') rutaAjustada = 'Chancay - Chancay';
+            
+            const destinos = datosReales.servicios?.Transporte?.[tipo]?.[rutaAjustada];
+            
+            if (destinos && Object.keys(destinos).length > 0) {
+                Object.keys(destinos).sort().forEach(destino => {
+                    select.appendChild(new Option(destino, destino));
+                });
+                mostrarElemento('destinoGroup');
+            } else {
+                ocultarElemento('destinoGroup');
+                mostrarError(`No hay destinos disponibles para la ruta ${ruta}`);
+            }
+        }
+
+        function cargarAlmacenes(puerto, operador) {
+            const group = document.getElementById('almacenGroup');
+            const select = document.getElementById('almacen');
+            select.innerHTML = '<option value="Embarque directo">Embarque directo</option>';
+            
+            if (puerto === 'CALLAO' && operador && operador !== '-' && datosReales.almacenes?.[puerto]?.[operador]) {
+                datosReales.almacenes[puerto][operador].forEach(a => {
+                    select.appendChild(new Option(a, a));
+                });
+                mostrarElemento('almacenGroup');
+            } else {
+                ocultarElemento('almacenGroup');
+            }
+        }
+
+        function cargarTamanos(tipo) {
+            const select = document.getElementById('tamanos');
+            select.innerHTML = '';
+            const tamanos = tamanosPorTipo[tipo] || [];
+            tamanos.forEach(t => select.appendChild(new Option(t, t, true, true)));
+            actualizarSelecciones();
+        }
+
+        // FUNCIÓN CORREGIDA - GENERAR TABLA CON ESTRUCTURA JERÁRQUICA Y CENTRADA
+        function generarTabla(navieras, tamanos, almacen, ruta) {
+            const header = document.getElementById('tablaHeader');
+            const body = document.getElementById('cuerpoTabla');
+            
+            // Limpiar tabla
+            header.innerHTML = '';
+            body.innerHTML = '';
+            
+            // Determinar servicios a mostrar
+            let servicios = [...serviciosBase];
+            if (almacen === "Embarque directo") {
+                servicios = servicios.filter(s => s !== 'Almacén');
+            } else {
+                servicios = servicios.filter(s => s !== 'Derechos de embarque');
+            }
+            if (ruta === "Sin transporte") {
+                servicios = servicios.filter(s => s !== 'Transporte');
+            }
+            
+            // CREAR ESTRUCTURA JERÁRQUICA DE HEADERS - TODOS CENTRADOS
+            const headerRow1 = document.createElement('tr');
+            const headerRow2 = document.createElement('tr');
+            
+            // Primera celda (SERVICIOS) que ocupa dos filas - CENTRADA
+            const thServicios1 = document.createElement('th');
+            thServicios1.textContent = 'SERVICIOS';
+            thServicios1.rowSpan = 2;
+            thServicios1.style.textAlign = 'center'; // CENTRADO
+            headerRow1.appendChild(thServicios1);
+            
+            // Headers de navieras que agrupan los tamaños - CENTRADOS
+            navieras.forEach(naviera => {
+                const thNaviera = document.createElement('th');
+                thNaviera.textContent = naviera.replace(/_/g, ' ');
+                thNaviera.className = 'naviera-group';
+                thNaviera.colSpan = tamanos.length;
+                thNaviera.style.textAlign = 'center'; // CENTRADO
+                headerRow1.appendChild(thNaviera);
+                
+                // Headers de tamaños para cada naviera - CENTRADOS
+                tamanos.forEach(tamano => {
+                    const thTamano = document.createElement('th');
+                    thTamano.textContent = tamano;
+                    thTamano.className = 'tamano-header';
+                    thTamano.style.textAlign = 'center'; // CENTRADO
+                    headerRow2.appendChild(thTamano);
+                });
+            });
+            
+            header.appendChild(headerRow1);
+            header.appendChild(headerRow2);
+            
+            // Generar filas de servicios - TODAS LAS CELDAS CENTRADAS
+            servicios.forEach(serv => {
+                const tr = document.createElement('tr');
+                tr.className = 'servicio-row';
+                
+                const tdServicio = document.createElement('td');
+                tdServicio.textContent = serv;
+                tdServicio.style.textAlign = 'center'; // SERVICIOS CENTRADO
+                tr.appendChild(tdServicio);
+                
+                navieras.forEach(n => {
+                    tamanos.forEach(t => {
+                        const td = document.createElement('td');
+                        td.id = `costo-${serv.replace(/\s/g,'')}-${n}-${t}`;
+                        td.textContent = '$0.00';
+                        td.style.textAlign = 'center'; // VALORES CENTRADOS
+                        tr.appendChild(td);
+                    });
+                });
+                
+                body.appendChild(tr);
+            });
+        }
+
+        function calcularCostos(tipo, puerto, navieras, tamanos, operador, almacen, ruta, destino, profit) {
+            const servicios = determinarServicios(almacen, ruta);
+            
+            navieras.forEach(naviera => {
+                tamanos.forEach(tamano => {
+                    servicios.forEach(servicio => {
+                        const id = `costo-${servicio.replace(/\s/g,'')}-${naviera}-${tamano}`;
+                        const celda = document.getElementById(id);
+                        
+                        let costo = 0;
+                        
+                        try {
+                            switch(servicio) {
+                                case 'Profit':
+                                    costo = profit;
+                                    break;
+                                case 'Visto Bueno':
+                                case 'Gate Out':
+                                    costo = datosReales.servicios[servicio]?.[tipo]?.[puerto]?.[naviera]?.total || 0;
+                                    break;
+                                case 'Almacén':
+                                    if (almacen !== "Embarque directo") {
+                                        costo = datosReales.servicios.Almacén?.[tipo]?.[puerto]?.[operador]?.[almacen]?.[tamano] || 0;
+                                    }
+                                    break;
+                                case 'Derechos de embarque':
+                                    if (almacen === "Embarque directo") {
+                                        const conceptos = datosReales.servicios['Derechos de embarque']?.[tipo]?.[puerto]?.[operador]?.conceptos;
+                                        if (conceptos) {
+                                            Object.values(conceptos).forEach(concepto => {
+                                                if (concepto[tamano] !== undefined) {
+                                                    costo += concepto[tamano] || 0;
+                                                }
+                                            });
+                                        }
+                                    }
+                                    break;
+                                case 'Aduanas':
+                                    costo = datosReales.servicios.Aduanas?.[tipo]?.[puerto]?.[naviera]?.[tamano] || 0;
+                                    break;
+                                case 'Transporte':
+                                    if (ruta !== "Sin transporte") {
+                                        let rutaAjustada = ruta;
+                                        if (ruta === 'Callao - Callao') rutaAjustada = 'Callao - Callao';
+                                        if (ruta === 'Callao - Chancay') rutaAjustada = 'Callao - Chancay';
+                                        if (ruta === 'Chancay - Chancay') rutaAjustada = 'Chancay - Chancay';
+                                        
+                                        costo = datosReales.servicios.Transporte?.[tipo]?.[rutaAjustada]?.[destino] || 0;
+                                    }
+                                    break;
+                            }
+                        } catch (error) {
+                            console.warn(`Error calculando ${servicio} para ${naviera}-${tamano}:`, error);
+                        }
+                        
+                        celda.textContent = `$${costo.toFixed(2)}`;
+                    });
+                });
+            });
+            
+            calcularTotales(navieras, tamanos, servicios);
+        }
+
+        function determinarServicios(almacen, ruta) {
+            let servicios = [...serviciosBase];
+            if (almacen === "Embarque directo") {
+                servicios = servicios.filter(s => s !== 'Almacén');
+            } else {
+                servicios = servicios.filter(s => s !== 'Derechos de embarque');
+            }
+            if (ruta === "Sin transporte") {
+                servicios = servicios.filter(s => s !== 'Transporte');
+            }
+            return servicios;
+        }
+
+        function calcularTotales(navieras, tamanos, servicios) {
+            const totalAnterior = document.querySelector('.total-row');
+            if (totalAnterior) totalAnterior.remove();
+            
+            const tr = document.createElement('tr');
+            tr.className = 'total-row';
+            
+            // Celda TOTAL también centrada
+            const tdTotal = document.createElement('td');
+            tdTotal.textContent = 'TOTAL (SIN IGV)';
+            tdTotal.style.textAlign = 'center';
+            tr.appendChild(tdTotal);
+            
+            navieras.forEach(naviera => {
+                tamanos.forEach(tamano => {
+                    let total = 0;
+                    
+                    servicios.forEach(servicio => {
+                        const id = `costo-${servicio.replace(/\s/g,'')}-${naviera}-${tamano}`;
+                        const celda = document.getElementById(id);
+                        if (celda) {
+                            const valor = parseFloat(celda.textContent.replace('$', '')) || 0;
+                            total += valor;
+                        }
+                    });
+                    
+                    const td = document.createElement('td');
+                    td.textContent = `$${total.toFixed(2)}`;
+                    td.style.textAlign = 'center';
+                    tr.appendChild(td);
+                });
+            });
+            
+            document.getElementById('cuerpoTabla').appendChild(tr);
+        }
+
+        function calcularCotizacion() {
+            limpiarErrores();
+            
+            const tipo = document.getElementById('tipoCarga').value;
+            const puerto = document.getElementById('puerto').value;
+            const operador = document.getElementById('operadorPortuario').value;
+            const almacen = document.getElementById('almacen').value;
+            const ruta = document.getElementById('ruta').value;
+            const destino = document.getElementById('destino').value;
+            const profit = parseFloat(document.getElementById('profitMargin').value) || 0;
+            
+            const navieras = Array.from(document.getElementById('lineasNavieras').selectedOptions).map(o => o.value);
+            const tamanos = Array.from(document.getElementById('tamanos').selectedOptions).map(o => o.value);
+            
+            if (!navieras.length) {
+                mostrarError("Selecciona al menos una naviera.");
+                return;
+            }
+            if (!tamanos.length) {
+                mostrarError("Selecciona al menos un tamaño de contenedor.");
+                return;
+            }
+            if (ruta !== "Sin transporte" && !destino) {
+                mostrarError("Selecciona un destino válido.");
+                return;
+            }
+            
+            generarTabla(navieras, tamanos, almacen, ruta);
+            calcularCostos(tipo, puerto, navieras, tamanos, operador, almacen, ruta, destino, profit);
+            mostrarElemento('tablaContainer');
+            
+            mostrarExito(`Cotización generada correctamente para ${navieras.length} naviera(s) y ${tamanos.length} tamaño(s) de contenedor.`);
+            
+            document.getElementById('tablaContainer').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function resetearFormulario() {
+            document.getElementById('tipoCarga').value = 'DRY';
+            document.getElementById('puerto').value = 'CALLAO';
+            document.getElementById('profitMargin').value = '0';
+            actualizarTodo();
+            ocultarElemento('tablaContainer');
+            limpiarErrores();
+            mostrarExito('Formulario reiniciado correctamente');
+        }
+
+        function exportarPDF() {
+            mostrarExito('Funcionalidad de exportación PDF en desarrollo');
+        }
+
+        function copiarTabla() {
+            mostrarExito('Funcionalidad de copiado en desarrollo');
+        }
+
+        function cerrarSesion() {
+            localStorage.removeItem('userLoggedIn');
+            localStorage.removeItem('loginTime');
+            window.location.href = 'index.html';
+        }
+
+        // Iniciar la aplicación
+        cargarDatos();
+    </script>
+</body>
+</html>

@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Cotizador Marítimo</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #2c3e50;
+            --secondary: #3498db;
+            --accent: #e74c3c;
+            --success: #27ae60;
+            --light: #ecf0f1;
+            --dark: #34495e;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        
+        .login-container {
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 30px;
+            color: var(--primary);
+        }
+        
+        .logo i {
+            font-size: 32px;
+            color: var(--secondary);
+        }
+        
+        .logo h1 {
+            font-size: 24px;
+            font-weight: 700;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--dark);
+        }
+        
+        input {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #e1e5e9;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: all 0.3s;
+        }
+        
+        input:focus {
+            outline: none;
+            border-color: var(--secondary);
+            box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
+        }
+        
+        .btn {
+            width: 100%;
+            background: var(--secondary);
+            color: white;
+            border: none;
+            padding: 14px;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+        
+        .btn:hover {
+            background: #2980b9;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        
+        .error {
+            background: #fdf2f2;
+            color: var(--accent);
+            padding: 12px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            border-left: 4px solid var(--accent);
+            display: none;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .footer {
+            margin-top: 25px;
+            color: #666;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <div class="logo">
+            <i class="fas fa-ship"></i>
+            <h1>COTIZADOR MARÍTIMO</h1>
+        </div>
+        
+        <div id="errorMessage" class="error">
+            <i class="fas fa-exclamation-circle"></i>
+            <span id="errorText">Usuario o contraseña incorrectos</span>
+        </div>
+        
+        <form id="loginForm">
+            <div class="form-group">
+                <label for="username"><i class="fas fa-user"></i> Usuario</label>
+                <input type="text" id="username" name="username" placeholder="Ingresa tu usuario" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="password"><i class="fas fa-lock"></i> Contraseña</label>
+                <input type="password" id="password" name="password" placeholder="Ingresa tu contraseña" required>
+            </div>
+            
+            <button type="submit" class="btn">
+                <i class="fas fa-sign-in-alt"></i>
+                INGRESAR AL COTIZADOR
+            </button>
+        </form>
+        
+        <div class="footer">
+            <p>Sistema de cotizaciones marítimas - Versión 2.0</p>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            const errorMessage = document.getElementById('errorMessage');
+            const errorText = document.getElementById('errorText');
+            
+            // Credenciales válidas
+            const validUsername = 'PricingIFS';
+            const validPassword = 'Pricingifs25';
+            
+            if (username === validUsername && password === validPassword) {
+                // Login exitoso - redirigir al cotizador
+                localStorage.setItem('userLoggedIn', 'true');
+                localStorage.setItem('loginTime', new Date().getTime());
+                window.location.href = 'cotizador.html';
+            } else {
+                // Login fallido
+                errorText.textContent = 'Usuario o contraseña incorrectos';
+                errorMessage.style.display = 'flex';
+                
+                // Limpiar campos
+                document.getElementById('password').value = '';
+                document.getElementById('password').focus();
+            }
+        });
+
+        // Limpiar error al empezar a escribir
+        document.getElementById('username').addEventListener('input', function() {
+            document.getElementById('errorMessage').style.display = 'none';
+        });
+        
+        document.getElementById('password').addEventListener('input', function() {
+            document.getElementById('errorMessage').style.display = 'none';
+        });
+
+        // Enfocar el campo de usuario al cargar
+        document.getElementById('username').focus();
+    </script>
+</body>
+</html>
