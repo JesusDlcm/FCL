@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cotizador MarÌtimo Profesional</title>
+    <title>Cotizador Mar√≠timo Profesional</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
@@ -197,7 +197,7 @@
             background: #2980b9;
         }
         
-        /* ESTILOS MEJORADOS PARA LA TABLA - ALINEACI”N CENTRADA */
+        /* ESTILOS MEJORADOS PARA LA TABLA - ALINEACI√ìN CENTRADA */
         .table-section {
             margin-top: 30px;
         }
@@ -258,7 +258,7 @@
             left: 0;
             background: #f8f9fa;
             z-index: 3;
-            text-align: center; /* SERVICIOS TAMBI…N CENTRADO */
+            text-align: center; /* SERVICIOS TAMBI√âN CENTRADO */
             min-width: 180px;
             font-weight: 600;
         }
@@ -358,7 +358,7 @@
             background: #f0f8ff;
         }
         
-        /* Cards para informaciÛn adicional */
+        /* Cards para informaci√≥n adicional */
         .info-cards {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -444,7 +444,7 @@
         <div class="app-header">
             <div class="logo">
                 <i class="fas fa-ship"></i>
-                <span>COTIZADOR MARÕTIMO</span>
+                <span>COTIZADOR MAR√çTIMO</span>
             </div>
             <div class="app-version">v2.0</div>
         </div>
@@ -452,26 +452,26 @@
         <div class="user-info">
             <span class="user-welcome">Bienvenido: PricingIFS</span>
             <button class="btn-logout" onclick="cerrarSesion()">
-                <i class="fas fa-sign-out-alt"></i> Cerrar SesiÛn
+                <i class="fas fa-sign-out-alt"></i> Cerrar Sesi√≥n
             </button>
         </div>
         
-        <h1><i class="fas fa-calculator"></i> Cotizador de Carga MarÌtima</h1>
+        <h1><i class="fas fa-calculator"></i> Cotizador de Carga Mar√≠tima</h1>
         
         <div class="info-cards">
             <div class="card">
-                <h3><i class="fas fa-info-circle"></i> CÛmo usar</h3>
-                <p>Selecciona los par·metros de tu envÌo y el sistema calcular· autom·ticamente los costos asociados.</p>
+                <h3><i class="fas fa-info-circle"></i> C√≥mo usar</h3>
+                <p>Selecciona los par√°metros de tu env√≠o y el sistema calcular√° autom√°ticamente los costos asociados.</p>
             </div>
             <div class="card">
                 <h3><i class="fas fa-lightbulb"></i> Consejos</h3>
-                <p>Para selecciÛn m˙ltiple mantÈn presionada la tecla CTRL (o CMD en Mac) al hacer clic.</p>
+                <p>Para selecci√≥n m√∫ltiple mant√©n presionada la tecla CTRL (o CMD en Mac) al hacer clic.</p>
             </div>
         </div>
         
         <div id="loading" class="loading">
             <div class="spinner"></div>
-            <div>Cargando datos de cotizaciÛn...</div>
+            <div>Cargando datos de cotizaci√≥n...</div>
         </div>
         
         <div id="controls" class="controls hidden">
@@ -498,7 +498,7 @@
             </div>
             
             <div class="form-group" id="almacenGroup">
-                <label><i class="fas fa-warehouse"></i> AlmacÈn</label>
+                <label><i class="fas fa-warehouse"></i> Almac√©n</label>
                 <select id="almacen">
                     <option value="Embarque directo">Embarque directo</option>
                 </select>
@@ -520,16 +520,16 @@
                 <label><i class="fas fa-ship"></i> Navieras</label>
                 <select id="lineasNavieras" multiple class="multiselect"></select>
                 <div class="form-hint">
-                    <i class="fas fa-mouse-pointer"></i> Ctrl+Click para selecciÛn m˙ltiple
+                    <i class="fas fa-mouse-pointer"></i> Ctrl+Click para selecci√≥n m√∫ltiple
                 </div>
                 <div id="navierasSeleccionadas" class="selections-display"></div>
             </div>
             
             <div class="form-group">
-                <label><i class="fas fa-ruler-combined"></i> TamaÒos</label>
+                <label><i class="fas fa-ruler-combined"></i> Tama√±os</label>
                 <select id="tamanos" multiple class="multiselect"></select>
                 <div class="form-hint">
-                    <i class="fas fa-mouse-pointer"></i> Ctrl+Click para selecciÛn m˙ltiple
+                    <i class="fas fa-mouse-pointer"></i> Ctrl+Click para selecci√≥n m√∫ltiple
                 </div>
                 <div id="tamanosSeleccionados" class="selections-display"></div>
             </div>
@@ -545,7 +545,7 @@
         
         <div id="btnContainer" class="btn-container hidden">
             <button class="btn" onclick="calcularCotizacion()">
-                <i class="fas fa-calculator"></i> CALCULAR COTIZACI”N
+                <i class="fas fa-calculator"></i> CALCULAR COTIZACI√ìN
             </button>
             <button class="btn btn-secondary" onclick="resetearFormulario()" style="margin-left: 10px;">
                 <i class="fas fa-redo"></i> LIMPIAR
@@ -572,7 +572,7 @@
             <div class="table-wrapper">
                 <table id="tablaCotizador">
                     <thead id="tablaHeader">
-                        <!-- Los headers se generar·n din·micamente con estructura corregida -->
+                        <!-- Los headers se generar√°n din√°micamente con estructura corregida -->
                     </thead>
                     <tbody id="cuerpoTabla"></tbody>
                 </table>
@@ -581,7 +581,7 @@
     </div>
 
     <script>
-        // ===== VERIFICACI”N DE SEGURIDAD - NO ELIMINAR =====
+        // ===== VERIFICACI√ìN DE SEGURIDAD - NO ELIMINAR =====
         (function() {
             const loginTime = localStorage.getItem('loginTime');
             const currentTime = new Date().getTime();
@@ -596,10 +596,10 @@
                 return;
             }
         })();
-        // ===== FIN VERIFICACI”N =====
+        // ===== FIN VERIFICACI√ìN =====
 
-        // ConfiguraciÛn inicial
-        const serviciosBase = ['Visto Bueno', 'Gate Out', 'AlmacÈn', 'Derechos de embarque', 'Aduanas', 'Transporte', 'Profit'];
+        // Configuraci√≥n inicial
+        const serviciosBase = ['Visto Bueno', 'Gate Out', 'Almac√©n', 'Derechos de embarque', 'Aduanas', 'Transporte', 'Profit'];
         const tamanosPorTipo = {
             'DRY': ['20ST', '40ST', '40HC'],
             'REEFER': ['20RE', '40RE']
@@ -714,7 +714,7 @@
             }
         }
 
-        // Inicializar la aplicaciÛn
+        // Inicializar la aplicaci√≥n
         function inicializar() {
             document.getElementById('tipoCarga').addEventListener('change', actualizarTodo);
             document.getElementById('puerto').addEventListener('change', actualizarTodo);
@@ -851,7 +851,7 @@
             actualizarSelecciones();
         }
 
-        // FUNCI”N CORREGIDA - GENERAR TABLA CON ESTRUCTURA JER¡RQUICA Y CENTRADA
+        // FUNCI√ìN CORREGIDA - GENERAR TABLA CON ESTRUCTURA JER√ÅRQUICA Y CENTRADA
         function generarTabla(navieras, tamanos, almacen, ruta) {
             const header = document.getElementById('tablaHeader');
             const body = document.getElementById('cuerpoTabla');
@@ -863,7 +863,7 @@
             // Determinar servicios a mostrar
             let servicios = [...serviciosBase];
             if (almacen === "Embarque directo") {
-                servicios = servicios.filter(s => s !== 'AlmacÈn');
+                servicios = servicios.filter(s => s !== 'Almac√©n');
             } else {
                 servicios = servicios.filter(s => s !== 'Derechos de embarque');
             }
@@ -871,7 +871,7 @@
                 servicios = servicios.filter(s => s !== 'Transporte');
             }
             
-            // CREAR ESTRUCTURA JER¡RQUICA DE HEADERS - TODOS CENTRADOS
+            // CREAR ESTRUCTURA JER√ÅRQUICA DE HEADERS - TODOS CENTRADOS
             const headerRow1 = document.createElement('tr');
             const headerRow2 = document.createElement('tr');
             
@@ -882,7 +882,7 @@
             thServicios1.style.textAlign = 'center'; // CENTRADO
             headerRow1.appendChild(thServicios1);
             
-            // Headers de navieras que agrupan los tamaÒos - CENTRADOS
+            // Headers de navieras que agrupan los tama√±os - CENTRADOS
             navieras.forEach(naviera => {
                 const thNaviera = document.createElement('th');
                 thNaviera.textContent = naviera.replace(/_/g, ' ');
@@ -891,7 +891,7 @@
                 thNaviera.style.textAlign = 'center'; // CENTRADO
                 headerRow1.appendChild(thNaviera);
                 
-                // Headers de tamaÒos para cada naviera - CENTRADOS
+                // Headers de tama√±os para cada naviera - CENTRADOS
                 tamanos.forEach(tamano => {
                     const thTamano = document.createElement('th');
                     thTamano.textContent = tamano;
@@ -948,9 +948,9 @@
                                 case 'Gate Out':
                                     costo = datosReales.servicios[servicio]?.[tipo]?.[puerto]?.[naviera]?.total || 0;
                                     break;
-                                case 'AlmacÈn':
+                                case 'Almac√©n':
                                     if (almacen !== "Embarque directo") {
-                                        costo = datosReales.servicios.AlmacÈn?.[tipo]?.[puerto]?.[operador]?.[almacen]?.[tamano] || 0;
+                                        costo = datosReales.servicios.Almac√©n?.[tipo]?.[puerto]?.[operador]?.[almacen]?.[tamano] || 0;
                                     }
                                     break;
                                 case 'Derechos de embarque':
@@ -994,7 +994,7 @@
         function determinarServicios(almacen, ruta) {
             let servicios = [...serviciosBase];
             if (almacen === "Embarque directo") {
-                servicios = servicios.filter(s => s !== 'AlmacÈn');
+                servicios = servicios.filter(s => s !== 'Almac√©n');
             } else {
                 servicios = servicios.filter(s => s !== 'Derechos de embarque');
             }
@@ -1011,7 +1011,7 @@
             const tr = document.createElement('tr');
             tr.className = 'total-row';
             
-            // Celda TOTAL tambiÈn centrada
+            // Celda TOTAL tambi√©n centrada
             const tdTotal = document.createElement('td');
             tdTotal.textContent = 'TOTAL (SIN IGV)';
             tdTotal.style.textAlign = 'center';
@@ -1059,11 +1059,11 @@
                 return;
             }
             if (!tamanos.length) {
-                mostrarError("Selecciona al menos un tamaÒo de contenedor.");
+                mostrarError("Selecciona al menos un tama√±o de contenedor.");
                 return;
             }
             if (ruta !== "Sin transporte" && !destino) {
-                mostrarError("Selecciona un destino v·lido.");
+                mostrarError("Selecciona un destino v√°lido.");
                 return;
             }
             
@@ -1071,7 +1071,7 @@
             calcularCostos(tipo, puerto, navieras, tamanos, operador, almacen, ruta, destino, profit);
             mostrarElemento('tablaContainer');
             
-            mostrarExito(`CotizaciÛn generada correctamente para ${navieras.length} naviera(s) y ${tamanos.length} tamaÒo(s) de contenedor.`);
+            mostrarExito(`Cotizaci√≥n generada correctamente para ${navieras.length} naviera(s) y ${tamanos.length} tama√±o(s) de contenedor.`);
             
             document.getElementById('tablaContainer').scrollIntoView({ behavior: 'smooth' });
         }
@@ -1087,7 +1087,7 @@
         }
 
         function exportarPDF() {
-            mostrarExito('Funcionalidad de exportaciÛn PDF en desarrollo');
+            mostrarExito('Funcionalidad de exportaci√≥n PDF en desarrollo');
         }
 
         function copiarTabla() {
@@ -1100,7 +1100,7 @@
             window.location.href = 'index.html';
         }
 
-        // Iniciar la aplicaciÛn
+        // Iniciar la aplicaci√≥n
         cargarDatos();
     </script>
 </body>
